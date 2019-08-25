@@ -21,7 +21,17 @@ app.get('/tasks', (req, res) => {
 
 // Start your code below
 
+app.get('/tasks', (req, res) => {
+  mongo.getTasks((result) => {
+    res.json(result);
+  })
+});
 
+// app.get('/tasks', (req, res) => {
+//   mongo.createTasks((result) => {
+//     res.json(result);
+//   })
+// });
 
 
 

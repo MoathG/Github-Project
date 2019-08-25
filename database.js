@@ -43,4 +43,32 @@ module.exports = {
 
 // Start your code below
 
+const tasksSchema = new mongoose.Schema({
+  title: String,
+  language: String,
+  status: Boolean,
+})
 
+let Tasks = mongoose.model('tasks', tasksSchema);
+
+let getTasks = (cb) => {
+  Tasks.find({}, (err, data) => {
+    if (err) {
+      cb(err)
+    } else {
+      cb(data)
+    }
+  })
+}
+
+
+
+
+
+
+
+
+
+module.exports = {
+  getTasks,
+}
