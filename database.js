@@ -61,6 +61,38 @@ let getTasks = (cb) => {
   })
 }
 
+let createTasks = (cb) => {
+  Tasks.create({
+    title: 'github',
+    language: 'javascript',
+    status: true
+  },
+    (err, data) => {
+      if(err) {
+        cb(err)
+      } else {
+        cb(data)
+      }
+    }
+  )
+}
+
+let newcreate = (cb,title,language,status) => {
+  console.log("mongo",title,language,status)
+  console.log("mongo", title)
+  Tasks.create({title: title,
+  language:language,
+status:status},
+     (err, data) => {
+    if (err) {
+      cb(err)
+    } else {
+      getTasks(cb);
+      
+    }
+  })
+}
+
 
 
 
@@ -71,4 +103,6 @@ let getTasks = (cb) => {
 
 module.exports = {
   getTasks,
+  createTasks,
+  newcreate,
 }

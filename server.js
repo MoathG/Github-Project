@@ -27,11 +27,31 @@ app.get('/tasks', (req, res) => {
   })
 });
 
-// app.get('/tasks', (req, res) => {
-//   mongo.createTasks((result) => {
-//     res.json(result);
-//   })
-// });
+app.get('/tasks', (req, res) => {
+  mongo.createTasks((result) => {
+    res.json(result);
+  })
+});
+
+app.post('/tasks/:title/:language/:status', (req, res) => {
+  // app.post('/task/:title', (req, res) => {
+ 
+   let title = (req.params.title);
+   let language = (req.params.language);
+   let status = (req.params.status);
+  
+   console.log("server",title,language,status)
+   //console.log(title)
+ 
+  // res.json(`server is working data => ${title} ${language} ${status}`)
+  
+ // console.log(req.body)
+  console.log("helloooooooooooooooooooo server")
+ 
+   mongo.newcreate((result) => {
+      res.json(result);
+    },title,language,status)
+ });
 
 
 
